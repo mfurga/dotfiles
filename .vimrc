@@ -8,6 +8,9 @@ set ai
 set hlsearch
 set cursorline
 
-highlight Comment ctermfg=green
+set list
+set listchars=trail:⋅
+hi SpecialKey ctermfg=grey guifg=grey70
 
+highlight Comment ctermfg=green
 
