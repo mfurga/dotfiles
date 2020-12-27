@@ -7,10 +7,10 @@ set number
 set ai
 set hlsearch
 set cursorline
+set ruler
 
 set list
 set listchars=trail:⋅
 hi SpecialKey ctermfg=grey guifg=grey70
-
 highlight Comment ctermfg=green
 
