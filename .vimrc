@@ -10,9 +10,10 @@ set cursorline
 set ruler
 
 set list
-set listchars=trail:⋅
+set listchars=trail:⋅,tab:\ \ 
 
 autocmd BufNewFile,BufRead *.asm set ft=nasm
+autocmd FileType make set noexpandtab
 
 " Highlights (xterm-256color)
 set t_Co=256
