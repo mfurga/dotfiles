@@ -1,0 +1,132 @@
+{
+  "editor.fontSize": 15,
+  "editor.mouseWheelZoom": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  "workbench.activityBar.visible": false,
+  "editor.minimap.enabled": false,
+
+  "workbench.colorCustomizations": {
+    "editor.background": "#272822",
+    "statusBar.background": "#009102",
+    "activityBar.foreground": "#f8f8f2",
+
+    "editorCursor.foreground": "#009102",
+    "editorCursor.background": "#272822"
+  },
+
+  "editor.cursorStyle": "block",
+
+  "editor.bracketPairColorization.enabled": false,
+
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+			  "scope": "comment",
+			  "settings": {
+				  "foreground": "#949494"
+			  }
+      },
+      {
+        "name": "Function paramenter",
+        "scope": "variable.parameter",
+        "settings": {
+          "foreground": "#eee"
+        }
+      },
+      {
+        "name": "Function name",
+        "scope": "entity.name.function",
+        "settings": {
+          "foreground": "#eee"
+        }
+      },
+      {
+        "name": "Variable",
+        "scope": "variable",
+        "settings": {
+          "foreground": "#F8F8F2"
+        }
+      },
+      {
+        "name": "Keyword",
+        "scope": "keyword.control",
+        "settings": {
+          "foreground": "#000"
+        }
+      },
+      {
+        "name": "String",
+        "scope": "string",
+        "settings": {
+          "foreground": "#E6DB74"
+        }
+      },
+      {
+        "name": "Number",
+        "scope": "constant.numeric",
+        "settings": {
+          "foreground": "#AE81FF"
+        }
+      },
+      {
+        "name": "Storage type",
+        "scope": ["type", "storage.type", "storage.modifier"],
+        "settings": {
+          "foreground": "#00df38"
+        }
+      },
+      {
+        "scope": "keyword.other.unit",
+        "settings": {
+          "foreground": "#AE81FF"
+        }
+      },
+      {
+        "scope": "keyword.control",
+        "settings": {
+          "foreground": "#ffdb4c"
+        }
+      },
+      {
+        "scope": "entity.name.function.preprocessor",
+         "settings": {
+          "foreground": "#eee"
+        }
+      },
+
+
+      // C highlight
+      {
+        "scope": "storage.type.asm.c",
+        "settings": {
+          "foreground": "#eee"
+        }
+      },
+
+      {
+        "scope": "keyword.control.directive",
+        "settings": {
+          "foreground": "#eee"
+        }
+      },
+
+      {
+        "scope": "entity.name.type.c",
+        "settings": {
+          "foreground": "#eee"
+        }
+      },
+
+      {
+        "scope": "meta.preprocessor",
+        "settings": {
+          "foreground": "#eee"
+        }
+      }
+
+    ]
+  },
+  "window.zoomLevel": 1
+}
