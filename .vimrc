@@ -16,7 +16,7 @@ autocmd BufNewFile,BufRead *.asm set ft=nasm
 autocmd FileType make set noexpandtab
 
 " Highlights (xterm-256color)
- set t_Co=256
+" set t_Co=256
 
 set termguicolors
 
@@ -35,13 +35,11 @@ hi PmenuSbar     guibg=#252526
 hi PmenuThumb    guibg=#2a4e67
 
 hi Visual        guibg=#264f78
-hi MatchParen    guibg=#264f78 cterm=bold
+hi MatchParen    guibg=#264f78
 hi LineNr        guifg=#858585
 hi CursorLine    guibg=NONE
 hi CursorLineNr  guifg=#c6c6c6
 hi SpecialKey    guifg=#eeeeee
-
-
 
 
 " Special for C lang
@@ -49,9 +47,8 @@ hi SpecialKey    guifg=#eeeeee
 hi PreProc       guifg=#ff7c8b
 hi cFormat       guifg=#ffdb4c
 
-
-
-
+"syn match cAsdf "define"
+"hi cAsdf guifg=#ff7c8b
 
 " major
 hi Normal    ctermfg=15
