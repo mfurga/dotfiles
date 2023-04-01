@@ -85,21 +85,20 @@ match OverLength '\%>80v.\+'
 
 " C
 call Hi("cFormat", C_YELLOW)
-
-"hi PreProc       guifg=#ff7c8b
-"hi cOnlyDefine   guifg=#ff7c8b
-"hi cOnlyInclude  guifg=#ff7c8b
-hi cOnlyPreProc   guifg=#ff7c8b
+call Hi("cOnlyPreProc", C_RED)
 
 hi link cOctalZero Number
 
-" Python
+autocmd BufEnter *.c,*.h
+  \ syn match cOnlyPreProc /#include\|#define\|#undef\|#pragma\|#if\|#else\|#elif\|#endif\|#error/
 
+autocmd BufEnter *.c,*.h
+  \ syn match cNumber "0b[01]\+\([u\|U]\=[l\|L]\{0,2}\)\>"
+
+" Python
 call Hi("pythonInclude", C_RED)
 
 autocmd FileType python
   \ syn keyword pythonConstant False True None NotImplemented Ellipsis __debug__
 hi def link pythonConstant Constant
-
-"hi pythonDecoratorName  guifg=#ff7c8b
 
