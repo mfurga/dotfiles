@@ -37,12 +37,14 @@ let C_PURPLE       = "#ae81ff"
 let C_BLUE         = "#04395e"
 let C_BLUE_LIGHT   = "#264f78"
 let C_BLUE_LIGHT2  = "#2a4e67"
-let C_GREEN        = "#00df38"
+"let C_GREEN        = "#00df38"
+let C_GREEN        = "#00db5c"
 let C_RED          = "#ff7c8b"
 let C_RED_LIGHT    = "#ffa0a0"
 let C_BROWN        = "#673917"
 let C_YELLOW       = "#ffdb4c"
 let C_YELLOW_LIGHT = "#e6db74"
+let C_GOLD         = "#ffc830"
 
 function Hi(what, guifg, guibg = "NONE", gui = "NONE")
   exe "hi " . a:what . " guifg=" . a:guifg . " guibg=" . a:guibg . " gui=" . a:gui
@@ -56,6 +58,7 @@ call Hi("Type", C_GREEN)
 call Hi("Statement", C_YELLOW)
 call Hi("Constant", C_RED_LIGHT)
 call Hi("Function", C_WHITE)
+call Hi("Special", C_YELLOW_LIGHT)
 
 call Hi("EndOfBuffer", C_DARK)
 call Hi("Search", C_WHITE, C_BROWN)
@@ -67,6 +70,9 @@ call Hi("SpecialKey", C_WHITE)
 call Hi("LineNr", C_GRAY)
 call Hi("CursorLine", C_NONE, C_NONE, "underline")
 call Hi("CursorLineNr", C_GRAY_LIGHT2)
+
+call Hi("StatusLine", C_GRAY_DARK, C_WHITE)
+call Hi("VertSplit", C_DARK, C_GRAY)
 
 " Menu
 call Hi("PMenu", C_WHITE, C_GRAY_DARK)
@@ -84,10 +90,12 @@ call Hi("OverLength", C_NONE, C_BROWN)
 match OverLength '\%>80v.\+'
 
 " C
-call Hi("cFormat", C_YELLOW)
+"call Hi("cFormat", C_YELLOW)
 call Hi("cOnlyPreProc", C_RED)
 
 hi link cOctalZero Number
+hi link cFormat Special
+hi link cCharacter String
 
 autocmd BufEnter *.c,*.h
   \ syn match cOnlyPreProc /#include\|#define\|#undef\|#pragma\|#if\|#else\|#elif\|#endif\|#error/
