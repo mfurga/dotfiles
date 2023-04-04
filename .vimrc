@@ -10,6 +10,19 @@ set hlsearch
 set cursorline
 set ruler
 set mouse=a
+"set laststatus=2
+
+set statusline=
+"set statusline+=%#PmenuSel#
+"set statusline+=%#LineNr#
+set statusline+=%f
+set statusline+=%m
+set statusline+=%=
+"set statusline+=%#CursorColumn#
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %{&fileformat}
+set statusline+=\ %y
+"set statusline+=\ %p%%
 
 "set colorcolumn=80
 "hi ColorColumn   guibg=#292a2a
@@ -58,7 +71,7 @@ call Hi("Type", C_GREEN)
 call Hi("Statement", C_YELLOW)
 call Hi("Constant", C_RED_LIGHT)
 call Hi("Function", C_WHITE)
-call Hi("Special", C_YELLOW_LIGHT)
+call Hi("Special", C_GOLD)
 
 call Hi("EndOfBuffer", C_DARK)
 call Hi("Search", C_WHITE, C_BROWN)
@@ -97,8 +110,8 @@ hi link cOctalZero Number
 hi link cFormat Special
 hi link cCharacter String
 
-autocmd BufEnter *.c,*.h
-  \ syn match cOnlyPreProc /#include\|#define\|#undef\|#pragma\|#if\|#else\|#elif\|#endif\|#error/
+autocmd BufEnter *.c,*.cc,*.h
+  \ syn match cOnlyPreProc /#include\|#define\|#undef\|#pragma\|#ifndef\|#if\|#else\|#elif\|#endif\|#error/
 
 autocmd BufEnter *.c,*.h
   \ syn match cNumber "0b[01]\+\([u\|U]\=[l\|L]\{0,2}\)\>"
