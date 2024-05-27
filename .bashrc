@@ -1,6 +1,6 @@
 # bashrc by Mateusz Furga <matfurga@gmail.com>
 
-TERM=tmux-256color
+TERM=xterm-256color
 
 # If not running interactively, don't do anything
 case $- in
@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=2000000
+HISTSIZE=10000000
+HISTFILESIZE=20000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -88,6 +88,12 @@ alias l='ls -CF'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+ida() {
+  ~/app/idafree-8.4/ida64 "$1" 2>/dev/null &
+}
+
+ alias ida="ida"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
