@@ -93,7 +93,7 @@ ida() {
   ~/app/idafree-8.4/ida64 "$1" 2>/dev/null &
 }
 
- alias ida="ida"
+alias ida="ida"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
