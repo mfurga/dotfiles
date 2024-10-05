@@ -8,45 +8,45 @@
   "editor.minimap.enabled": false,
 
   "workbench.colorCustomizations": {
-    "editor.background": "#272822",
+    "editor.background": "#262626",
     "statusBar.background": "#009102",
     "activityBar.foreground": "#f8f8f2",
 
-    "editorCursor.foreground": "#009102",
+    "editorCursor.foreground": "#55aa00",
     "editorCursor.background": "#272822"
   },
 
-  "editor.cursorStyle": "block",
+  //"editor.cursorStyle": "block",
 
   "editor.bracketPairColorization.enabled": false,
 
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
-			  "scope": "comment",
-			  "settings": {
-				  "foreground": "#949494"
-			  }
+        "scope": "comment",
+        "settings": {
+        "foreground": "#949494"
+      }
       },
       {
         "name": "Function paramenter",
         "scope": "variable.parameter",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       },
       {
         "name": "Function name",
         "scope": "entity.name.function",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       },
       {
         "name": "Variable",
         "scope": "variable",
         "settings": {
-          "foreground": "#F8F8F2"
+          "foreground": "#f0f0f0"
         }
       },
       {
@@ -71,10 +71,16 @@
         }
       },
       {
+        "scope": "constant.language",
+        "settings": {
+          "foreground": "#ffa0a0"
+        }
+      },
+      {
         "name": "Storage type",
         "scope": ["type", "storage.type", "storage.modifier"],
         "settings": {
-          "foreground": "#00df38"
+          "foreground": "#00db5c"
         }
       },
       {
@@ -91,38 +97,59 @@
       },
       {
         "scope": "entity.name.function.preprocessor",
-         "settings": {
-          "foreground": "#eee"
+          "settings": {
+          "foreground": "#f0f0f0"
         }
       },
 
+      {
+        "scope": "entity.name.type.cpp",
+        "settings": {
+          "foreground": "#f0f0f0"
+        }
+      },
+
+      // C++ highlight
+      {
+        "scope": ["keyword.control.directive.include.cpp", "keyword.control.directive.define.cpp"],
+        "settings": {
+          "foreground": "#ff7c8b"
+        }
+      },
+
+      {
+        "scope": ["storage.modifier.reference.cpp"],
+        "settings": {
+          "foreground": "#f0f0f0"
+        }
+      },
 
       // C highlight
       {
         "scope": "storage.type.asm.c",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       },
 
       {
         "scope": "keyword.control.directive",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       },
 
       {
         "scope": "entity.name.type.c",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       },
 
       {
         "scope": "meta.preprocessor",
         "settings": {
-          "foreground": "#eee"
+          "foreground": "#f0f0f0"
         }
       }
 
