@@ -39,7 +39,7 @@ set termguicolors
 " Colors
 let C_NONE         = "NONE"
 let C_WHITE        = "#f0f0f0"
-let C_DARK         = "#262626"
+let C_DARK         = "#2b2b2b"
 let C_GRAY         = "#858585"
 let C_GRAY_LIGHT   = "#949494"
 let C_GRAY_LIGHT2  = "#c6c6c6"
