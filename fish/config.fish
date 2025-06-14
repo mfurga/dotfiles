@@ -1,4 +1,5 @@
 # fish config
+# Author: Mateusz Furga
 
 # config
 set -g fish_greeting
@@ -65,7 +66,7 @@ set -g fish_pager_color_secondary_completion
 set -g fish_pager_color_secondary_background
 
 # prompt colors
-set -g fish_color_user bryellow
+set -g fish_color_user ffcd75
 set -g fish_color_cwd brblue
 
 # git prompt
