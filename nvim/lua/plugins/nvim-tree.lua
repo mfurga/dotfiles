@@ -8,7 +8,9 @@ return {
   config = function()
     require("nvim-tree").setup {
       view = {
-        width = 30,
+        side = "left",
+        width = 25,
+        preserve_window_proportions = true
       },
     }
   end,

@@ -1,114 +1,117 @@
-vim.cmd("syntax on")
-vim.opt.termguicolors = true
-
-local C = {
+-- Colors
+_G.C = {
   NONE         = "NONE",
   WHITE        = "#f0f0f0",
+
   DARK         = "#292929",
-  DARK         = "#282828",
-  GRAY         = "#858585",
-  GRAY_LIGHT   = "#949494",
-  GRAY_LIGHT2  = "#c6c6c6",
-  GRAY_LIGHT3  = "#c0c0c0",
-  GRAY_DARK    = "#2d2d2d",
-  GRAY_DARK2   = "#404040",
-  GRAY_DARK3   = "#555555",
+  DARK_HARD    = "#222222",
+
+  DARK_1       = "#2d2d2d",
+  DARK_2       = "#404040",
+  DARK_3       = "#555555",
+
+  GRAY         = "#949494",
+  GRAY_SOFT    = "#c0c0c0",
+
   PURPLE       = "#ae81ff",
-  BLUE         = "#04395e",
-  BLUE_LIGHT   = "#264f78",
-  BLUE_LIGHT2  = "#2a4e67",
-  GREEN        = "#00db5c",
-  RED          = "#ff7c8b",
-  RED_LIGHT    = "#ffa0a0",
-  RED_LIGHT2   = "#ffbaba";
+
+  BLUE         = "#264f78",
+  BLUE_2       = "#5fafff",
+
+  GREEN        = "#57cb8b",
+  GREEN_2      = "#a3be8c",
+
+  RED          = "#eb7a8f",
+  RED_HARD     = "#bf616a",
+  RED_2        = "#ffbaba",
+
   BROWN        = "#673917",
-  YELLOW       = "#ffdb4c",
+
+  YELLOW       = "#ebcb8b",
   YELLOW_LIGHT = "#e6db74",
-  GOLD         = "#ffc830",
-  TEST         = "#222222",
-  FOLDER       = "#5fafff",
 }
 
--- Helpers
 local function hi(group, opts)
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-hi("@comment",       { fg = C.GRAY_LIGHT })
+hi("@comment",       { fg = C.GRAY })
+hi("@string.documentation",   { fg = C.GRAY })
+
 hi("@string",        { fg = C.YELLOW_LIGHT })
 hi("@number",        { fg = C.PURPLE })
 hi("@number.float",  { fg = C.PURPLE })
 hi("@type",          { fg = C.GREEN })
-hi("@constant",      { fg = C.RED_LIGHT })
+hi("@type.builtin",  { fg = C.GREEN })
+hi("@constant",      { fg = C.RED_2 })
+hi("@constant.builtin", { fg = C.RED_2 })
+
 hi("@function",      { fg = C.WHITE })
 hi("@function.call", { fg = C.WHITE })
-hi("@special",       { fg = C.GOLD })
-hi("@keyword",       { fg = "#eb7a8f" })  -- corresponds to "Statement"
-hi("@include",       { fg = "#eb7a8f" })  -- for `import` / `from` in Python
+hi("@constructor",   { fg = C.WHITE })
+hi("@keyword",       { fg = C.RED })
+hi("@include",       { fg = C.RED })
 hi("@variable",      { fg = C.WHITE })
 hi("@module",        { fg = C.WHITE })
 hi("@field",         { fg = C.WHITE })
-hi("@parameter",     { fg = C.GRAY_LIGHT2 })
-hi("@attribute",     { fg = C.YELLOW_LIGHT })
 hi("@punctuation",   { fg = C.WHITE })
 hi("@operator",      { fg = C.WHITE })
 
-local test = "#7aeb88"
-local test = "#62e79d"
-local test = "#7aebac"
-local test = "#43db86"
---local test = "#61c18d"
-local test = "#5bc58a"
-local test = "#67c792"
-local test = "#5eb585"
-local test = "#4db97e"
-local test = "#57cb8b"
-
-
-hi("@type", { fg = test })
-hi("@type.builtin", { fg = test })
-
-
-hi("@string.documentation",   { fg = C.GRAY_LIGHT })
 
 hi("@punctuation.special",   { fg = C.WHITE })
-hi("@constant.builtin", { fg = C.RED_LIGHT })
 hi("@function.builtin", { fg = C.WHITE })
 
 hi("@variable.builtin", { fg = C.WHITE })
 
-hi("@attribute", { fg = C.RED_LIGHT2 })
-hi("@attribute.builtin", { fg = C.RED_LIGHT2 })
+hi("@attribute", { fg = C.RED_2 })
+hi("@attribute.builtin", { fg = C.RED_2 })
+hi("@keyword.modifier",  { fg = C.RED_2 })
 
 hi("@lsp.type.property", { fg = C.WHITE })
-
-hi("@keyword.modifier",  { fg = C.RED_LIGHT2 })
 
 
 hi("Normal",         { fg = C.WHITE, bg = C.DARK })
 hi("EndOfBuffer",    { bg = C.DARK })
 hi("Search",         { fg = C.WHITE, bg = C.BROWN })
-hi("Visual",         { bg = C.BLUE_LIGHT })
-hi("MatchParen",     { bg = C.BLUE_LIGHT })
+hi("Visual",         { bg = C.BLUE })
+hi("MatchParen",     { bg = C.BLUE })
 hi("SpecialKey",     { fg = C.WHITE })
-hi("LineNr",         { fg = C.GRAY_DARK3 })
-hi("CursorLine",     { underline = true, sp = "#777777" })
-
-hi("CursorLineNr",   { fg = C.GRAY_LIGHT3 })
+hi("LineNr",         { fg = C.DARK_3 })
+hi("CursorLine",     { bg = C.DARK_1 })
+hi("CursorLineNr",   { fg = C.GRAY_SOFT })
 hi("VertSplit",      { fg = C.DARK, bg = C.GRAY })
-hi("PMenu",          { fg = C.WHITE, bg = C.GRAY_DARK })
+hi("PMenu",          { fg = C.WHITE, bg = C.DARK_1 })
 hi("PMenuSel",       { fg = C.WHITE, bg = C.BLUE })
-hi("PmenuSbar",      { bg = C.GRAY_DARK })
-hi("PmenuThumb",     { bg = C.BLUE_LIGHT2 })
-hi("TabLine",        { fg = C.GRAY_LIGHT3, bg = C.GRAY_DARK2 })
+hi("PmenuSbar",      { bg = C.DARK_1 })
+hi("PmenuThumb",     { bg = C.BLUE })
+hi("TabLine",        { fg = C.GRAY_SOFT, bg = C.DARK_2 })
 hi("TabLineSel",     { fg = C.WHITE, bg = C.DARK })
 hi("TabLineFill",    { bg = C.DARK })
 
+hi("DiffAdd", { fg = C.GREEN_2 })
+hi("DiffChange", { fg = C.YELLOW })
+hi("DiffDelete", { fg = C.RED_HARD })
+
+hi("GitSignsAddNr", { fg = C.GREEN_2 })
+hi("GitSignsChangeNr", { fg = C.YELLOW })
+hi("GitSignsDeleteNr", { fg = C.RED_HARD })
+
+hi("StatusLineMode", { bold = true })
+hi("StatusLineGit",  { fg = C.GREEN_2 })
+hi("StatusLine",     { fg = C.GRAY_SOFT, bg = C.DARK, bold = true })
+
 -- NvimTree
-hi("NvimTreeWinSeparator", { fg = C.TEST, bg = C.TEST })
-hi("NvimTreeNormal",       { bg = C.TEST })
-hi("NvimTreeFolderName",   { fg = C.FOLDER })
-hi("NvimTreeFolderIcon",   { fg = C.FOLDER })
-hi("NvimTreeOpenedFolderName", { fg = C.FOLDER })
-hi("NvimTreeFolderArrowClosed", { fg = C.GRAY_LIGHT })
+hi("NvimTreeWinSeparator", { fg = C.DARK_HARD, bg = C.DARK_HARD })
+hi("NvimTreeNormal",       { bg = C.DARK_HARD })
+hi("NvimTreeEndOfBuffer",  { bg = C.DARK_HARD })
+hi("NvimTreeFolderName",   { fg = C.BLUE_2 })
+hi("NvimTreeFolderIcon",   { fg = C.BLUE_2 })
+hi("NvimTreeOpenedFolderName", { fg = C.BLUE_2 })
+hi("NvimTreeFolderArrowClosed", { fg = C.GRAY })
+
+hi("CmpNormal", { bg = C.DARK_HARD })
+hi("NormalFloat", { bg = C.DARK_HARD })
+hi("CmpCursorLine", { bg = "#00395e", underline = false })
+hi("CmpFloatBorder", { fg = C.BLUE })
+hi("CmpItemAbbrMatch", { fg = C.BLUE_2 })
 

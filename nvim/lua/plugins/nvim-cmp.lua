@@ -24,6 +24,9 @@ return {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<C-k>"] = cmp.mapping(function()
+          vim.lsp.buf.signature_help()
+        end, { "i", "n" }),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -31,12 +34,28 @@ return {
         { name = "buffer" },
         { name = "path" },
       }),
-      formatting = {
-        format = lspkind.cmp_format({
-          maxwidth = 40,
-          ellipsis_char = "…",
-        })
-      }
+      window = {
+        completion = {
+          border = "none",
+          winhighlight = "Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:CmpCursorLine",
+        },
+        documentation = {
+          border = "none",
+          winhighlight = "Normal:CmpNormal",
+        },
+      },
+      -- completion = {
+      --   autocomplete = false,
+      -- },
+
+
+      -- formatting = {
+      --   format = lspkind.cmp_format({
+      --     maxwidth = 40,
+      --     ellipsis_char = "…",
+      --   })
+      -- }
+
     })
   end
 }

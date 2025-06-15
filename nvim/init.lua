@@ -2,7 +2,7 @@
 -- Author: Mateusz Furga
 
 require("core.lazy")
-require("core.config")
+require("core.options")
 require("core.colors")
 require("core.statusline")
 
