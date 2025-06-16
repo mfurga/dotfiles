@@ -4,6 +4,7 @@ _G.C = {
   WHITE        = "#f0f0f0",
 
   DARK         = "#292929",
+  DARK         = "#282828",
   DARK_HARD    = "#222222",
 
   DARK_1       = "#2d2d2d",
@@ -66,6 +67,7 @@ hi("@variable.builtin", { fg = C.WHITE })
 hi("@attribute", { fg = C.RED_2 })
 hi("@attribute.builtin", { fg = C.RED_2 })
 hi("@keyword.modifier",  { fg = C.RED_2 })
+hi("@function.macro",    { fg = C.RED_2 })
 
 hi("@lsp.type.property", { fg = C.WHITE })
 
@@ -97,7 +99,7 @@ hi("GitSignsChangeNr", { fg = C.YELLOW })
 hi("GitSignsDeleteNr", { fg = C.RED_HARD })
 
 hi("StatusLineMode", { bold = true })
-hi("StatusLineGit",  { fg = C.GREEN_2 })
+-- hi("StatusLineGit",  { fg = C.GREEN_2 })
 hi("StatusLine",     { fg = C.GRAY_SOFT, bg = C.DARK, bold = true })
 
 -- NvimTree
@@ -109,9 +111,8 @@ hi("NvimTreeFolderIcon",   { fg = C.BLUE_2 })
 hi("NvimTreeOpenedFolderName", { fg = C.BLUE_2 })
 hi("NvimTreeFolderArrowClosed", { fg = C.GRAY })
 
-hi("CmpNormal", { bg = C.DARK_HARD })
-hi("NormalFloat", { bg = C.DARK_HARD })
-hi("CmpCursorLine", { bg = "#00395e", underline = false })
-hi("CmpFloatBorder", { fg = C.BLUE })
-hi("CmpItemAbbrMatch", { fg = C.BLUE_2 })
+hi("BlinkCmpSignatureHelp", { bg = C.DARK_1 })
+hi("BlinkCmpSignatureHelpBorder", { bg = C.DARK_1 })
+hi("BlinkCmpDoc", { bg = C.DARK_1 })
+hi("BlinkCmpDocBorder", { bg = C.DARK_1 })
 

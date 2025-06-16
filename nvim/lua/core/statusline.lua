@@ -63,6 +63,22 @@ function diagnostic_errors()
   return ""
 end
 
+function diagnostic_warnings()
+  local count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+  if count > 0 then
+    return " " .. count .. " "
+  end
+  return ""
+end
+
+function diagnostic_hints()
+  local count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+  if count > 0 then
+    return " " .. count .. " "
+  end
+  return ""
+end
+
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 
@@ -78,6 +94,20 @@ vim.opt.statusline = table.concat({
   "%#StatusLine#",
 
   "%#DiffAdd#",
+  "%{v:lua.diagnostic_hints()}",
+  "%#StatusLine#",
+
+  "%#DiffChange#",
+  "%{v:lua.diagnostic_warnings()}",
+  "%#StatusLine#",
+
+  "%#DiffDelete#",
+  "%{v:lua.diagnostic_errors()}",
+  "%#StatusLine#",
+
+  "%=",
+
+  "%#DiffAdd#",
   "%{v:lua.git_added()}",
 
   "%#DiffChange#",
@@ -85,13 +115,6 @@ vim.opt.statusline = table.concat({
 
   "%#DiffDelete#",
   "%{v:lua.git_removed()}",
-
-  "%#StatusLine#",
-
-  "%=",
-
-  "%#DiffDelete#",
-  " %{v:lua.diagnostic_errors()}",
   "%#StatusLine#",
 
   " %l:%c",
