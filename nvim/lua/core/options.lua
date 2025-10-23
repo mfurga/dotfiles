@@ -55,7 +55,16 @@ vim.lsp.config.rust_analyzer = {
   },
 }
 
-vim.lsp.enable({"clangd", "pyright", "rust_analyzer"})
+vim.lsp.config.tsserver = {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  single_file_support = true,
+  settings = {
+    completions = { completeFunctionCalls = true },
+  },
+}
+
+vim.lsp.enable({"clangd", "pyright", "rust_analyzer", "tsserver"})
 
 vim.diagnostic.config({
   virtual_text = {
