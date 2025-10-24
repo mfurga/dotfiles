@@ -15,7 +15,7 @@ vim.opt.mouse = "a"
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor20"
 
 vim.opt.list = true
-vim.opt.listchars = { trail = "⋅" }
+vim.opt.listchars = { trail = "⋅", tab = "  " }
 vim.opt.syntax = "on"
 vim.opt.termguicolors = true
 vim.opt.fillchars:append({ eob = " " })
@@ -41,10 +41,21 @@ vim.lsp.config.clangd = {
   filetypes = { "c", "cpp" },
 }
 
-vim.lsp.config.pyright = {
+require("lspconfig").pyright.setup({
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
-}
+  root_dir = require("lspconfig.util").root_pattern(".git", "main.py"),
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = false,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+        extraPaths = { "." },
+      },
+    },
+  },
+})
 
 vim.lsp.config.rust_analyzer = {
   cmd = { "rust-analyzer" },
@@ -66,10 +77,22 @@ vim.lsp.config.tsserver = {
 
 vim.lsp.enable({"clangd", "pyright", "rust_analyzer", "tsserver"})
 
+vim.fn.sign_define("DiagnosticSignError", {
+  text = "",
+  texthl = "",
+  numhl = "",
+  linehl = "ErrorLine"
+})
+
+vim.cmd([[
+  highlight ErrorLine guibg=#51202A guifg=NONE
+]])
+
 vim.diagnostic.config({
   virtual_text = {
     severity = vim.diagnostic.severity.ERROR,
   },
+  --signs = false,
   signs = {
     severity = vim.diagnostic.severity.ERROR,
   },

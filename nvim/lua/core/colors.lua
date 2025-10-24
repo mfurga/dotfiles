@@ -66,7 +66,7 @@ hi("@variable.builtin", { fg = C.WHITE })
 
 hi("@attribute", { fg = C.RED_2 })
 hi("@attribute.builtin", { fg = C.RED_2 })
-hi("@keyword.modifier",  { fg = C.RED_2 })
+hi("@keyword.modifier",  { fg = C.RED })
 hi("@function.macro",    { fg = C.RED_2 })
 
 hi("@lsp.type.property", { fg = C.WHITE })
