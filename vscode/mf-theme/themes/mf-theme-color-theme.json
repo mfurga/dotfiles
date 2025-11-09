@@ -138,7 +138,7 @@
 		"tab.selectedBackground": "#222222",
 		"tab.selectedBorderTop": "#6caddf",
 		"tab.selectedForeground": "#ffffffa0",
-		"tab.unfocusedActiveBorder": "#1f1f1f",
+		"tab.unfocusedActiveBorder": "#00000000",
 		"tab.unfocusedActiveBorderTop": "#2b2b2b",
 		"tab.unfocusedHoverBackground": "#1f1f1f",
 		"terminal.foreground": "#cccccc",
@@ -229,7 +229,7 @@
 			"scope": [
 				"constant",
 				"constant.language",
-				"support.variable.magic.python",
+				"support.variable.magic",
 				"keyword.operator.sizeof",
 				"keyword.codetag.notation",
 				"variable.language.special.self.python",

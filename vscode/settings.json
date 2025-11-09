@@ -1,0 +1,38 @@
+{
+    "editor.fontFamily": "Hack Nerd Font",
+    "editor.fontSize": 15,
+    "editor.mouseWheelZoom": true,
+    "editor.minimap.enabled": false,
+    "editor.guides.indentation": false,
+    "editor.language.colorizedBracketPairs": [],
+
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.visual": "block",
+
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}",
+    "window.zoomLevel": 0.6,
+    "window.menuBarVisibility": "toggle",
+    "window.commandCenter": false,
+
+    "workbench.colorTheme": "mf theme",
+    "workbench.activityBar.location": "top",
+    "workbench.navigationControl.enabled": false,
+    "workbench.iconTheme": "eq-material-theme-icons-ocean",
+
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "erlang": true,
+        "rust": false,
+        "c": true,
+        "python": true,
+        "javascript": true,
+        "php": true
+    },
+
+    "breadcrumbs.enabled": false
+}
