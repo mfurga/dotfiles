@@ -1,9 +1,11 @@
 # fish config
-# Author: Mateusz Furga
 
 # config
 set -g fish_greeting
-set -g fish_autosuggestion_enabled 0
+set -g fish_autosuggestion_enabled 1
+
+# alias
+alias ida="~/.app/ida-free-pc-9.1/ida"
 
 # prompt
 function fish_prompt
@@ -25,56 +27,64 @@ function fish_prompt
 end
 
 # color schema
-set -g fish_color_normal normal
-set -g fish_color_command
-set -g fish_color_keyword
-set -g fish_color_quote
-set -g fish_color_redirection
-set -g fish_color_end
-set -g fish_color_error
-set -g fish_color_param
-set -g fish_color_comment
-set -g fish_color_match
-set -g fish_color_selection --reverse
-set -g fish_color_search_match --reverse
-set -g fish_color_history_current
-set -g fish_color_operator
-set -g fish_color_escape
-set -g fish_color_cwd brblue
-set -g fish_color_cwd_root normal
-set -g fish_color_option
-set -g fish_color_valid_path
-set -g fish_color_autosuggestion brblack
-set -g fish_color_user bryellow
-set -g fish_color_host normal
-set -g fish_color_host_remote yellow
-set -g fish_color_history_current
-set -g fish_color_status normal
-set -g fish_color_cancel
-set -g fish_pager_color_background
-set -g fish_pager_color_prefix --underline
-set -g fish_pager_color_progress brblack
-set -g fish_pager_color_completion normal
-set -g fish_pager_color_description brblack
-set -g fish_pager_color_selected_background --reverse
-set -g fish_pager_color_selected_prefix
-set -g fish_pager_color_selected_completion
-set -g fish_pager_color_selected_description
-set -g fish_pager_color_secondary_prefix
-set -g fish_pager_color_secondary_description
-set -g fish_pager_color_secondary_completion
-set -g fish_pager_color_secondary_background
+# set -g fish_color_normal normal
+# set -g fish_color_command
+# set -g fish_color_keyword
+# set -g fish_color_quote
+# set -g fish_color_redirection
+# set -g fish_color_end
+# set -g fish_color_error
+# set -g fish_color_param
+# set -g fish_color_comment
+# set -g fish_color_match
+# set -g fish_color_selection --reverse
+# set -g fish_color_search_match --reverse
+# set -g fish_color_history_current
+# set -g fish_color_operator
+# set -g fish_color_escape
+# set -g fish_color_cwd brblue
+# set -g fish_color_cwd_root normal
+# set -g fish_color_option
+# set -g fish_color_valid_path
+# set -g fish_color_autosuggestion brblack
+# set -g fish_color_user bryellow
+# set -g fish_color_host normal
+# set -g fish_color_host_remote yellow
+# set -g fish_color_history_current
+# set -g fish_color_status normal
+# set -g fish_color_cancel
+# set -g fish_pager_color_background
+# set -g fish_pager_color_prefix --underline
+# set -g fish_pager_color_progress brblack
+# set -g fish_pager_color_completion normal
+# set -g fish_pager_color_description brblack
+# set -g fish_pager_color_selected_background --reverse
+# set -g fish_pager_color_selected_prefix
+# set -g fish_pager_color_selected_completion
+# set -g fish_pager_color_selected_description
+# set -g fish_pager_color_secondary_prefix
+# set -g fish_pager_color_secondary_description
+# set -g fish_pager_color_secondary_completion
+# set -g fish_pager_color_secondary_background
 
 # prompt colors
-set -g fish_color_user ffcd75
-set -g fish_color_cwd brblue
+set -g fish_color_user bryellow
 
 # git prompt
 set -g __fish_git_prompt_showdirtystate 1
 set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showstashstate 1
 set -g __fish_git_prompt_showcolorhints 1
-set -g __fish_git_prompt_show_informative_status 0
+set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showupstream auto
+
+set -g __fish_git_prompt_char_cleanstate        '✔'
+set -g __fish_git_prompt_char_stagedstate       '●'
+set -g __fish_git_prompt_char_dirtystate        '✚'
+set -g __fish_git_prompt_char_untrackedfiles    '?'
+set -g __fish_git_prompt_char_upstream_ahead    '↑'
+set -g __fish_git_prompt_char_upstream_behind   '↓'
+set -g __fish_git_prompt_char_stashstate        '↺'
 
 # git prompt colors
 set -g ___fish_git_prompt_color_branch (set_color normal)
@@ -85,4 +95,13 @@ set -g ___fish_git_prompt_color_untrackedfiles (set_color brblue)
 set -g ___fish_git_prompt_color_untrackedfiles_done (set_color normal)
 set -g ___fish_git_prompt_color_stagedstate (set_color bryellow)
 set -g ___fish_git_prompt_color_stagedstate_done (set_color normal)
+set -g ___fish_git_prompt_color_stashstate (set_color brmagenta)
+set -g ___fish_git_prompt_color_stashstate (set_color brmagenta)
+set -g ___fish_git_prompt_color_cleanstate  (set_color brgreen)
+set -g ___fish_git_prompt_color_cleanstate_done  (set_color normal)
 
+set -g ___fish_git_prompt_color_upstream (set_color brgreen)
+set -g ___fish_git_prompt_color_upstream_done (set_color normal)
+
+# source "/home/mf/code/emsdk/emsdk_env.fish"
+/home/mf/.local/bin/mise activate fish | source
