@@ -6,6 +6,7 @@ set -g fish_autosuggestion_enabled 0
 
 # alias
 alias ida="~/.app/ida-free-pc-9.1/ida"
+alias ga="git add"
 alias gs="git status"
 alias gd="git diff"
 alias gds="git diff --staged"
@@ -14,8 +15,8 @@ alias gco="git commit"
 alias gb="git branch"
 alias gps="git push"
 alias gpl="git pull"
-alias gl="git log --graph --all"
-alias glo="git log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+alias gl="git log --graph"
+alias glo="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
 # prompt
 function fish_prompt
