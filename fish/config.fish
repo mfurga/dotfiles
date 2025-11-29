@@ -2,10 +2,20 @@
 
 # config
 set -g fish_greeting
-set -g fish_autosuggestion_enabled 1
+set -g fish_autosuggestion_enabled 0
 
 # alias
 alias ida="~/.app/ida-free-pc-9.1/ida"
+alias gs="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gc="git checkout"
+alias gco="git commit"
+alias gb="git branch"
+alias gps="git push"
+alias gpl="git pull"
+alias gl="git log --graph --all"
+alias glo="git log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
 # prompt
 function fish_prompt
@@ -27,45 +37,45 @@ function fish_prompt
 end
 
 # color schema
-# set -g fish_color_normal normal
-# set -g fish_color_command
-# set -g fish_color_keyword
-# set -g fish_color_quote
-# set -g fish_color_redirection
-# set -g fish_color_end
-# set -g fish_color_error
-# set -g fish_color_param
-# set -g fish_color_comment
-# set -g fish_color_match
-# set -g fish_color_selection --reverse
-# set -g fish_color_search_match --reverse
-# set -g fish_color_history_current
-# set -g fish_color_operator
-# set -g fish_color_escape
-# set -g fish_color_cwd brblue
-# set -g fish_color_cwd_root normal
-# set -g fish_color_option
-# set -g fish_color_valid_path
-# set -g fish_color_autosuggestion brblack
-# set -g fish_color_user bryellow
-# set -g fish_color_host normal
-# set -g fish_color_host_remote yellow
-# set -g fish_color_history_current
-# set -g fish_color_status normal
-# set -g fish_color_cancel
-# set -g fish_pager_color_background
-# set -g fish_pager_color_prefix --underline
-# set -g fish_pager_color_progress brblack
-# set -g fish_pager_color_completion normal
-# set -g fish_pager_color_description brblack
-# set -g fish_pager_color_selected_background --reverse
-# set -g fish_pager_color_selected_prefix
-# set -g fish_pager_color_selected_completion
-# set -g fish_pager_color_selected_description
-# set -g fish_pager_color_secondary_prefix
-# set -g fish_pager_color_secondary_description
-# set -g fish_pager_color_secondary_completion
-# set -g fish_pager_color_secondary_background
+set -g fish_color_normal normal
+set -g fish_color_command
+set -g fish_color_keyword
+set -g fish_color_quote
+set -g fish_color_redirection
+set -g fish_color_end
+set -g fish_color_error
+set -g fish_color_param
+set -g fish_color_comment
+set -g fish_color_match
+set -g fish_color_selection --reverse
+set -g fish_color_search_match --reverse
+set -g fish_color_history_current
+set -g fish_color_operator
+set -g fish_color_escape
+set -g fish_color_cwd brblue
+set -g fish_color_cwd_root normal
+set -g fish_color_option
+set -g fish_color_valid_path
+set -g fish_color_autosuggestion brblack
+set -g fish_color_user bryellow
+set -g fish_color_host normal
+set -g fish_color_host_remote yellow
+set -g fish_color_history_current
+set -g fish_color_status normal
+set -g fish_color_cancel
+set -g fish_pager_color_background
+set -g fish_pager_color_prefix --underline
+set -g fish_pager_color_progress brblack
+set -g fish_pager_color_completion normal
+set -g fish_pager_color_description brblack
+set -g fish_pager_color_selected_background --reverse
+set -g fish_pager_color_selected_prefix
+set -g fish_pager_color_selected_completion
+set -g fish_pager_color_selected_description
+set -g fish_pager_color_secondary_prefix
+set -g fish_pager_color_secondary_description
+set -g fish_pager_color_secondary_completion
+set -g fish_pager_color_secondary_background
 
 # prompt colors
 set -g fish_color_user bryellow
@@ -105,3 +115,4 @@ set -g ___fish_git_prompt_color_upstream_done (set_color normal)
 
 # source "/home/mf/code/emsdk/emsdk_env.fish"
 /home/mf/.local/bin/mise activate fish | source
+
