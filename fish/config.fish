@@ -114,6 +114,7 @@ set -g ___fish_git_prompt_color_cleanstate_done  (set_color normal)
 set -g ___fish_git_prompt_color_upstream (set_color brgreen)
 set -g ___fish_git_prompt_color_upstream_done (set_color normal)
 
-# source "/home/mf/code/emsdk/emsdk_env.fish"
-/home/mf/.local/bin/mise activate fish | source
+set -g ___fish_git_prompt_color_invalidstate (set_color brred)
+set -g ___fish_git_prompt_color_invalidstate_done (set_color normal)
 
+# source "/home/mf/code/emsdk/emsdk_env.fish"
