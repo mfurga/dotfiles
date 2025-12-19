@@ -6,6 +6,8 @@ set -g fish_autosuggestion_enabled 0
 
 # alias
 alias ida="~/.app/ida-free-pc-9.1/ida"
+alias cat="bat"
+
 alias ga="git add"
 alias gs="git status"
 alias gd="git diff"
