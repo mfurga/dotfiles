@@ -20,7 +20,7 @@ alias gpl="git pull"
 alias gl="git log --graph"
 alias glo="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
-set -x FZF_DEFAULT_OPTS '--color="base16,fg+:20,bg+:18,prompt:5" --pointer=""'
+set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --pointer="" --no-bold'
 fzf --fish | source
 
 # prompt
