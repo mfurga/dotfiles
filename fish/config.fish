@@ -5,7 +5,7 @@ set -g fish_greeting
 set -g fish_autosuggestion_enabled 0
 
 # alias
-alias ida="~/.app/ida-free-pc-9.1/ida"
+alias vim="nvim"
 alias cat="bat"
 
 alias ga="git add"
@@ -96,7 +96,7 @@ set -g __fish_git_prompt_showupstream auto
 
 set -g __fish_git_prompt_char_cleanstate        '✔'
 set -g __fish_git_prompt_char_stagedstate       '●'
-set -g __fish_git_prompt_char_dirtystate        '✚'
+set -g __fish_git_prompt_char_dirtystate        '+'
 set -g __fish_git_prompt_char_untrackedfiles    '?'
 set -g __fish_git_prompt_char_upstream_ahead    '↑'
 set -g __fish_git_prompt_char_upstream_behind   '↓'
