@@ -68,6 +68,13 @@ hi("TabLine",        { fg = C.TEXT, bg = C.BACKGROUND })
 hi("TabLineSel",     { fg = C.TEXT, bg = C.BACKGROUND })
 hi("TabLineFill",    { bg = C.BACKGROUND })
 
+hi("DiagnosticError",   { fg = C.RED })
+hi("DiagnosticWarning",    { fg = C.OCHRE })
+hi("DiagnosticUnderlineError",   {  sp = C.RED, undercurl = true })
+
+hi("CopilotSuggestion", { fg = C.GREY_2, italic = true })
+hi("CopilotAnnotation", { fg = C.OLIVE, italic = true })
+
 hi("DiffAdd", { fg = C.GREEN })
 hi("DiffChange", { fg = C.OLIVE })
 hi("DiffDelete", { fg = C.RED })

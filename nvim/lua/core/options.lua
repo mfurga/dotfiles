@@ -86,20 +86,22 @@ vim.lsp.enable({"clangd", "pyright", "rust_analyzer", "tsserver"})
 --   linehl = "ErrorLine"
 -- })
 
-vim.cmd([[
-  highlight ErrorLine guibg=#51202A guifg=NONE
-]])
+-- vim.cmd([[
+--   highlight ErrorLine guibg=#51202A guifg=NONE
+-- ]])
 
 vim.diagnostic.config({
   virtual_text = {
     severity = vim.diagnostic.severity.ERROR,
+    prefix = "●"
   },
-  --signs = false,
-  signs = {
-    severity = vim.diagnostic.severity.ERROR,
-  },
+  signs = false,
+  -- signs = {
+  --   severity = vim.diagnostic.severity.ERROR,
+  -- },
   underline = {
     severity = vim.diagnostic.severity.ERROR,
+    prefix = ""
   },
   update_in_insert = false,
 })
