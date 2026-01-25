@@ -87,15 +87,6 @@ hi("StatusLineMode", { fg = "#513a7e", bg = C.GREY_1 })
 hi("StatusLineGit",  { fg = C.TEXT })
 hi("StatusLine",     { fg = C.GREY_3, bg = C.GREY_1 })
 
--- barbar
-hi("BufferSeparator", { fg = C.NONE, bg = C.NONE })
-hi("BufferInactive", { fg = C.NONE, bg = C.NONE })
-hi("BufferCurrentSeparator", { fg = C.NONE, bg = C.NONE })
-hi("BufferCurrentModified", { fg = C.NONE, bg = C.NONE })
-hi("BufferCloseIcon", { fg = C.RED })
-hi("BufferTabpageFill", { fg = C.NONE, bg = C.NONE })
-hi("BufferCurrent", { fg = C.NONE, bg = C.NONE })
-
 -- NvimTree
 hi("NvimTreeWinSeparator", { fg = C.BACKGROUND, bg = C.BACKGROUND })
 hi("NvimTreeNormal",       { bg = C.BACKGROUND })

@@ -1,5 +1,4 @@
 return {
-  {
     "github/copilot.vim",
     init = function()
       vim.g.copilot_no_tab_map = true
@@ -15,6 +14,18 @@ return {
       vim.keymap.set("i", "<C-J>", "<Plug>(copilot-next)", { desc = "Copilot Next" })
       vim.keymap.set("i", "<C-K>", "<Plug>(copilot-previous)", { desc = "Copilot Prev" })
       vim.keymap.set("i", "<C-H>", "<Plug>(copilot-dismiss)", { desc = "Copilot Dismiss" })
+
+      vim.api.nvim_create_autocmd("InsertLeave", {
+        callback = function()
+          if vim.fn.exists(":Copilot") ~= 2 then
+            return
+          end
+          vim.api.nvim_feedkeys(
+            vim.api.nvim_replace_termcodes("<Plug>(copilot-dismiss)", true, false, true),
+            "i",
+            false
+          )
+        end,
+      })
     end,
-  },
 }

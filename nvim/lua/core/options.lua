@@ -23,17 +23,21 @@ vim.opt.termguicolors = true
 vim.opt.fillchars:append({ eob = " " })
 vim.g.mapleader = " "
 
-vim.api.nvim_set_keymap("i", '"', '""<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "'", "''<Left>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "(", '()<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "[", '[]<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "{", '{}<Left>', { noremap = true, silent = true })
-
 -- keymaps
 
-local telescope = require("telescope.builtin")
-vim.keymap.set("n", "<leader><leader>", telescope.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>f", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-C>", "<Esc>", { silent = true, desc = "Ctrl-C behaves like Esc" })
+
+vim.keymap.set("i", '"', '""<Left>', { noremap = true, silent = true })
+vim.keymap.set("i", "'", "''<Left>", { noremap = true, silent = true })
+vim.keymap.set("i", "(", '()<Left>', { noremap = true, silent = true })
+vim.keymap.set("i", "[", '[]<Left>', { noremap = true, silent = true })
+vim.keymap.set("i", "{", '{}<Left>', { noremap = true, silent = true })
+
+local fzf = require("fzf-lua")
+
+vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>s", fzf.live_grep, { desc = "Search text" })
+vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "Find buffers" })
 
 -- lsp
 
