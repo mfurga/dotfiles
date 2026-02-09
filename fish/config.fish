@@ -20,8 +20,11 @@ alias gpl="git pull"
 alias gl="git log --graph"
 alias glo="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
-set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --pointer="" --no-bold'
+set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --pointer="" --no-bold --layout=reverse'
+set -x _ZO_FZF_OPTS "$FZF_DEFAULT_OPTS --height 10 --no-border --bind 'tab:down,btab:up'"
+
 fzf --fish | source
+zoxide init fish --cmd cd | source
 
 # prompt
 function fish_prompt
