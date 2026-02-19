@@ -20,11 +20,12 @@ alias gpl="git pull"
 alias gl="git log --graph"
 alias glo="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
-set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --pointer="" --no-bold --layout=reverse'
-set -x _ZO_FZF_OPTS "$FZF_DEFAULT_OPTS --height 10 --no-border --bind 'tab:down,btab:up'"
+set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --height 15 --pointer="" --no-bold --layout=reverse'
+set -x _ZO_FZF_OPTS "$FZF_DEFAULT_OPTS --height 15 --no-border --bind 'tab:down,btab:up'"
 
 fzf --fish | source
 zoxide init fish --cmd cd | source
+mise activate | source
 
 # prompt
 function fish_prompt
@@ -87,7 +88,7 @@ set -g fish_pager_color_secondary_completion
 set -g fish_pager_color_secondary_background
 
 # prompt colors
-set -g fish_color_user bryellow
+set -g fish_color_user yellow
 
 # git prompt
 set -g __fish_git_prompt_showdirtystate 1
