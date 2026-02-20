@@ -14,13 +14,39 @@ function mode_name()
   return modes[vim.api.nvim_get_mode().mode] or "UNKNOWN"
 end
 
+-- function filetype_icon()
+--   local devicons = require("nvim-web-devicons")
+
+--   local filename = vim.fn.expand("%:t")
+--   local extension = vim.fn.expand("%:e")
+--   local icon, icon_hl = devicons.get_icon(filename, extension, { default = true })
+--   return { icon = icon or "", hl = icon_hl or "StatusLine" }
+-- end
+
+-- function filetype_icon()
+--   local devicons = require("nvim-web-devicons")
+
+--   local filename = vim.fn.expand("%:t")
+--   local extension = vim.fn.expand("%:e")
+--   local icon, icon_hl = devicons.get_icon(filename, extension, { default = true })
+
+--   icon = icon or ""
+--   icon_hl = icon_hl or "StatusLine"
+
+--   return "%#" .. icon_hl .. "#" .. icon
+-- end
+
 function filetype_icon()
   local devicons = require("nvim-web-devicons")
 
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
-  local icon, icon_hl = devicons.get_icon(filename, extension, { default = true })
-  return { icon = icon or "", hl = icon_hl or "StatusLine" }
+  local icon, hl = devicons.get_icon(filename, extension, { default = true })
+
+  return {
+    icon = icon or "",
+    hl   = hl   or "StatusLine",
+  }
 end
 
 function git_branch()
@@ -100,7 +126,7 @@ function copilot_status()
   if vim.fn.exists(":Copilot") == 2 then
     local ok, enabled = pcall(vim.fn["copilot#Enabled"])
     if ok then
-      return enabled == 1 and "  on" or "  off"
+      return enabled == 1 and "󰚩 on" or "󱚧 off"
     end
   end
   return ""
@@ -116,9 +142,9 @@ vim.opt.statusline = table.concat({
 
   " %f ",
 
-  "%#StatusLineGit#",
-  "%{v:lua.git_branch()}",
-  "%#StatusLine#",
+  -- "%#StatusLineGit#",
+  -- "%{v:lua.git_branch()}",
+  -- "%#StatusLine#",
 
   "%@v:lua.toggle_copilot@",
   " %{v:lua.copilot_status()} ",
@@ -138,8 +164,6 @@ vim.opt.statusline = table.concat({
   "%{v:lua.diagnostic_errors()}",
   "%#StatusLine#",
 
-  " ",
-
   "%#DiffAdd#",
   "%{v:lua.git_added()}",
 
@@ -150,10 +174,32 @@ vim.opt.statusline = table.concat({
   "%{v:lua.git_removed()}",
   "%#StatusLine#",
 
-  " %l:%c ",
-  " %p%% ",
+  " ",
 
-  " %#" .. filetype_icon().hl .. "#",
-  filetype_icon().icon .. "  ",
+  -- " %l:%c ",
+  -- " %p%% ",
+
+  -- "%{v:lua.filetype_icon()} ",
+  "%#%{v:lua.filetype_icon().icon}#",
+  "%{v:lua.filetype_icon().icon} ",
+  "%*",
+
+  -- " %#" .. filetype_icon().hl .. "#",
+  -- filetype_icon().icon .. "  ",
   "%#StatusLine#",
+})
+
+vim.opt.winbar = "%=%m %f %y %l:%c "
+
+vim.opt.winbar = table.concat({
+  "%#DevIconNeovim#   %* nvim",
+
+  "%=",
+
+  "%#WinBarGit#",
+  "%{v:lua.git_branch()}",
+  "%#WinBar#",
+
+
+
 })
