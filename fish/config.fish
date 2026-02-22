@@ -67,7 +67,7 @@ set -g fish_color_cwd_root normal
 set -g fish_color_option
 set -g fish_color_valid_path
 set -g fish_color_autosuggestion brblack
-set -g fish_color_user bryellow
+set -g fish_color_user green
 set -g fish_color_host normal
 set -g fish_color_host_remote yellow
 set -g fish_color_history_current
@@ -86,9 +86,6 @@ set -g fish_pager_color_secondary_prefix
 set -g fish_pager_color_secondary_description
 set -g fish_pager_color_secondary_completion
 set -g fish_pager_color_secondary_background
-
-# prompt colors
-set -g fish_color_user yellow
 
 # git prompt
 set -g __fish_git_prompt_showdirtystate 1
