@@ -32,11 +32,20 @@ vim.keymap.set("i", "(", '()<Left>', { noremap = true, silent = true })
 vim.keymap.set("i", "[", '[]<Left>', { noremap = true, silent = true })
 vim.keymap.set("i", "{", '{}<Left>', { noremap = true, silent = true })
 
-local fzf = require("fzf-lua")
+local function fzf_call(fn)
+  return function()
+    local ok, fzf = pcall(require, "fzf-lua")
+    if not ok then
+      vim.notify("fzf-lua is not available", vim.log.levels.WARN)
+      return
+    end
+    fzf[fn]()
+  end
+end
 
-vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>s", fzf.live_grep, { desc = "Search text" })
-vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>f", fzf_call("files"), { desc = "Find files" })
+vim.keymap.set("n", "<leader>s", fzf_call("live_grep"), { desc = "Search text" })
+vim.keymap.set("n", "<leader><leader>", fzf_call("buffers"), { desc = "Find buffers" })
 
 -- lsp
 
@@ -108,4 +117,3 @@ vim.diagnostic.config({
   },
   update_in_insert = false,
 })
-
