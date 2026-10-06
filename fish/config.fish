@@ -20,12 +20,20 @@ alias gpl="git pull"
 alias gl="git log --graph"
 alias glo="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
+bind \e. history-last-token-search-backward
+
 set -x FZF_DEFAULT_OPTS '--color="16,fg+:20,bg+:18,prompt:5" --height 15 --pointer="" --no-bold --layout=reverse'
 set -x _ZO_FZF_OPTS "$FZF_DEFAULT_OPTS --height 15 --no-border --bind 'tab:down,btab:up'"
 
+# macOS: put Homebrew ahead of /usr/bin so `git` is the real binary, not Apple's slow xcrun shim
+if test -d /opt/homebrew/bin
+    fish_add_path --append --move /opt/homebrew/bin /opt/homebrew/sbin
+end
+fish_add_path --move $HOME/.local/bin
+
 fzf --fish | source
 zoxide init fish --cmd cd | source
-mise activate | source
+command -q mise; and mise activate fish | source
 
 # prompt
 function fish_prompt
@@ -93,7 +101,7 @@ set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showstashstate 1
 set -g __fish_git_prompt_showcolorhints 1
 set -g __fish_git_prompt_show_informative_status 1
-set -g __fish_git_prompt_showupstream auto
+#set -g __fish_git_prompt_showupstream auto
 
 set -g __fish_git_prompt_char_cleanstate        '✔'
 set -g __fish_git_prompt_char_stagedstate       '●'
