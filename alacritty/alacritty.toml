@@ -22,6 +22,11 @@ key = "Return"
 mods = "Shift"
 chars = "\u001B\r"
 
+[[keyboard.bindings]]
+key = "Period"
+mods = "Command"
+chars = "\u001B."
+
 [font]
 normal = { family = "Hack Nerd Font", style = "Regular" }
 bold = { family = "Hack Nerd Font", style = "Bold" }
