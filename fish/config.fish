@@ -103,6 +103,16 @@ set -g __fish_git_prompt_showcolorhints 1
 set -g __fish_git_prompt_show_informative_status 1
 #set -g __fish_git_prompt_showupstream auto
 
+# Truncate long branch names in the prompt.
+set -g __fish_git_prompt_branch_maxlen 20
+functions -q fish_git_prompt
+functions -c __fish_git_prompt_operation_branch_bare __orig_fish_git_prompt_operation_branch_bare
+function __fish_git_prompt_operation_branch_bare
+    set -l out (__orig_fish_git_prompt_operation_branch_bare $argv)
+    set out[2] (string replace refs/heads/ '' -- $out[2] | string shorten -m $__fish_git_prompt_branch_maxlen)
+    printf '%s\n' $out
+end
+
 set -g __fish_git_prompt_char_cleanstate        '✔'
 set -g __fish_git_prompt_char_stagedstate       '●'
 set -g __fish_git_prompt_char_dirtystate        '+'
