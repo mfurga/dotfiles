@@ -28,7 +28,7 @@ return {
     -- keymap = { preset = 'default' },
 
     keymap = {
-      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<q>'] = { 'show', 'show_documentation', 'hide_documentation' },
       ['<C-e>'] = { 'hide', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
 
