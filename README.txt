@@ -1,5 +1,10 @@
-Terminal configuration
-======================
+dotfiles
+========
 
-bash -c "$(wget -O - https://raw.githubusercontent.com/mfurga/configuration/master/get_env.sh)"
+Each top-level directory is a GNU stow package mirroring $HOME.
 
+    git clone https://github.com/mfurga/configuration ~/code/dotfiles
+    cd ~/code/dotfiles
+    stow -t ~ tmux vim bash fish nvim alacritty bat
+
+Remove a package's links with `stow -D -t ~ <pkg>`.
