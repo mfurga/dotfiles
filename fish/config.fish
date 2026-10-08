@@ -51,7 +51,7 @@ function fish_prompt
     set suffix '#'
   end
 
-  echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$suffix " "
+  echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_git_prompt) $normal " "$suffix " "
 end
 
 # color schema
@@ -95,50 +95,78 @@ set -g fish_pager_color_secondary_description
 set -g fish_pager_color_secondary_completion
 set -g fish_pager_color_secondary_background
 
-# git prompt
-set -g __fish_git_prompt_showdirtystate 1
-set -g __fish_git_prompt_showuntrackedfiles 1
-set -g __fish_git_prompt_showstashstate 1
-set -g __fish_git_prompt_showcolorhints 1
-set -g __fish_git_prompt_show_informative_status 1
-#set -g __fish_git_prompt_showupstream auto
+set -g __git_prompt_branch_maxlen 20
 
-# Truncate long branch names in the prompt.
-set -g __fish_git_prompt_branch_maxlen 20
-functions -q fish_git_prompt
-functions -c __fish_git_prompt_operation_branch_bare __orig_fish_git_prompt_operation_branch_bare
-function __fish_git_prompt_operation_branch_bare
-    set -l out (__orig_fish_git_prompt_operation_branch_bare $argv)
-    set out[2] (string replace refs/heads/ '' -- $out[2] | string shorten -m $__fish_git_prompt_branch_maxlen)
-    printf '%s\n' $out
+function __git_prompt_dir --description 'Print the .git dir for $PWD without spawning git, or fail'
+    set -l d $PWD
+    while true
+        if test -d "$d/.git"
+            echo "$d/.git"; return 0
+        else if test -f "$d/.git"  # worktree / submodule: "gitdir: <path>"
+            string replace -r '^gitdir: ' '' <"$d/.git"; return 0
+        end
+        test "$d" = /; and return 1
+        set d (path dirname $d)
+    end
 end
 
-set -g __fish_git_prompt_char_cleanstate        '✔'
-set -g __fish_git_prompt_char_stagedstate       '●'
-set -g __fish_git_prompt_char_dirtystate        '+'
-set -g __fish_git_prompt_char_untrackedfiles    '?'
-set -g __fish_git_prompt_char_upstream_ahead    '↑'
-set -g __fish_git_prompt_char_upstream_behind   '↓'
-set -g __fish_git_prompt_char_stashstate        '↺'
+function fish_git_prompt
+    set -l git_dir (__git_prompt_dir); or return 1
+    string match -q '/*' -- $git_dir; or set git_dir "$PWD/$git_dir"
 
-# git prompt colors
-set -g ___fish_git_prompt_color_branch (set_color normal)
-set -g ___fish_git_prompt_color_branch_done (set_color normal)
-set -g ___fish_git_prompt_color_dirtystate (set_color brred)
-set -g ___fish_git_prompt_color_dirtystate_done (set_color normal)
-set -g ___fish_git_prompt_color_untrackedfiles (set_color brblue)
-set -g ___fish_git_prompt_color_untrackedfiles_done (set_color normal)
-set -g ___fish_git_prompt_color_stagedstate (set_color bryellow)
-set -g ___fish_git_prompt_color_stagedstate_done (set_color normal)
-set -g ___fish_git_prompt_color_stashstate (set_color brmagenta)
-set -g ___fish_git_prompt_color_stashstate (set_color brmagenta)
-set -g ___fish_git_prompt_color_cleanstate  (set_color brgreen)
-set -g ___fish_git_prompt_color_cleanstate_done  (set_color normal)
+    set -l branch
+    set -l staged 0
+    set -l dirty 0
+    set -l untracked 0
+    set -l status_lines (command git -c core.fsmonitor= status --porcelain=v2 --branch -z 2>/dev/null | string split0)
+    or return 1
+    for line in $status_lines
+        switch $line
+            case '# branch.head *'
+                set branch (string sub -s 15 -- $line)
+            case '# *'
+            case '1 *' '2 *'
+                set -l xy (string sub -s 3 -l 2 -- $line)
+                string match -rq '^[^.]' -- $xy; and set staged (math $staged + 1)
+                string match -rq '[^.]$' -- $xy; and set dirty (math $dirty + 1)
+            case 'u *'
+                set dirty (math $dirty + 1)
+            case '? *'
+                set untracked (math $untracked + 1)
+        end
+    end
 
-set -g ___fish_git_prompt_color_upstream (set_color brgreen)
-set -g ___fish_git_prompt_color_upstream_done (set_color normal)
+    if test "$branch" = '(detached)'
+        set branch "("(string shorten -m8 -c '' -- (string sub -s 14 -- $status_lines[1]))")"
+    else
+        set branch (string shorten -m $__git_prompt_branch_maxlen -- $branch)
+    end
 
-set -g ___fish_git_prompt_color_invalidstate (set_color brred)
-set -g ___fish_git_prompt_color_invalidstate_done (set_color normal)
+    set -l operation
+    if test -d $git_dir/rebase-merge; or test -d $git_dir/rebase-apply
+        set operation '|REBASE'
+    else if test -f $git_dir/MERGE_HEAD
+        set operation '|MERGING'
+    else if test -f $git_dir/CHERRY_PICK_HEAD
+        set operation '|CHERRY-PICKING'
+    else if test -f $git_dir/REVERT_HEAD
+        set operation '|REVERTING'
+    else if test -f $git_dir/BISECT_LOG
+        set operation '|BISECTING'
+    end
+
+    set -l stash 0
+    test -f $git_dir/logs/refs/stash; and set stash (count (string split \n <$git_dir/logs/refs/stash))
+
+    set -l n (set_color normal)
+    set -l info
+    test $staged -gt 0; and set -a info (set_color bryellow)"●$staged"$n
+    test $dirty -gt 0; and set -a info (set_color brred)"+$dirty"$n
+    test $untracked -gt 0; and set -a info (set_color brblue)"?$untracked"$n
+    test $stash -gt 0; and set -a info (set_color brmagenta)"↺$stash"$n
+    test (count $info) -eq 0; and set info (set_color brgreen)"✔"$n
+
+    echo -n -s ' (' $branch $operation '|' $info ')'
+end
 
 # source "/home/mf/code/emsdk/emsdk_env.fish"
